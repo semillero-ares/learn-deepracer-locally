@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="es" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="description" content="None" />
+      <link rel="shortcut icon" href="img/favicon.ico" />
+    <title>Aprendiendo a usar DeepRacer localmente</title>
+    <link rel="stylesheet" href="css/theme.css" />
+    <link rel="stylesheet" href="css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "Aprendiendo a usar DeepRacer localmente";
+        var mkdocs_page_input_path = "index.md";
+        var mkdocs_page_url = null;
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href="." class="icon icon-home"> Aprendiendo a usar DeepRacer localmente
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="./search.html" method="get">
+      <input type="text" name="q" placeholder="Buscar documentos" aria-label="Buscar documentos" title="Escriba el término de búsqueda aquí" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Menu de navegación">
+              <ul class="current">
+                <li class="toctree-l1 current"><a class="reference internal current" href=".">Aprendiendo a usar DeepRacer localmente</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#solucionando-el-error">Solucionando el error</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#lista-de-comandos">Lista de comandos</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#verificar-que-el-docker-esta-corriendo">Verificar que el docker esta corriendo</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#para-hacer-el-streaming-en-youtube-del-entrenamiento">Para hacer el streaming en YouTube del entrenamiento</a>
+    </li>
+        </ul>
+    </li>
+    </ul>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="deepracer-WSL/">Correr el deep-racer en WSL de Windows</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="deepracer-ubuntu/">Correr el deep-racer en Ubuntu</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="deepracer-windows/">Correr el deep-racer en Windows sin WSL</a>
+                </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Menú de navegación en móvil">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href=".">Aprendiendo a usar DeepRacer localmente</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="." class="icon icon-home" aria-label="Documentos"></a></li>
+      <li class="breadcrumb-item active">Aprendiendo a usar DeepRacer localmente</li>
+    <li class="wy-breadcrumbs-aside">
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="aprendiendo-a-usar-deepracer-localmente">Aprendiendo a usar DeepRacer localmente</h1>
+<p>https://deepracer.com</p>
+<p>https://student.deepracer.com</p>
+<p>https://docs.docker.com/engine/install/ubuntu/#install-using-the-repository</p>
+<p>Add Docker's official GPG key:</p>
+<pre><code class="language-sh">sudo apt-get update
+sudo apt-get install ca-certificates curl gnupg
+sudo install -m 0755 -d /etc/apt/keyrings
+curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo gpg --dearmor -o /etc/apt/keyrings/docker.gpg
+sudo chmod a+r /etc/apt/keyrings/docker.gpg
+</code></pre>
+<p>Add the repository to Apt sources:</p>
+<pre><code class="language-sh">echo \
+  &quot;deb [arch=&quot;$(dpkg --print-architecture)&quot; signed-by=/etc/apt/keyrings/docker.gpg] https://download.docker.com/linux/ubuntu \
+  &quot;$(. /etc/os-release &amp;&amp; echo &quot;$VERSION_CODENAME&quot;)&quot; stable&quot; | \
+  sudo tee /etc/apt/sources.list.d/docker.list &gt; /dev/null
+sudo apt-get update
+</code></pre>
+<pre><code class="language-sh">sudo apt-get install docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
+</code></pre>
+<p>https://aws-deepracer-community.github.io/deepracer-for-cloud/windows.html</p>
+<pre><code class="language-sh">sudo apt-get install jq awscli python3-boto3 docker-compose 
+</code></pre>
+<p>https://stackoverflow.com/questions/44678725/cannot-connect-to-the-docker-daemon-at-unix-var-run-docker-sock-is-the-docker</p>
+<pre><code class="language-sh">sudo systemctl start docker
+sudo docker run hello-world
+</code></pre>
+<p>https://aws-deepracer-community.github.io/deepracer-for-cloud/installation.html</p>
+<pre><code class="language-sh">git clone https://github.com/aws-deepracer-community/deepracer-for-cloud.git
+</code></pre>
+<pre><code>aws configure --profile minio
+</code></pre>
+<h2 id="solucionando-el-error">Solucionando el error</h2>
+<p>Error : <code>dial unix /var/run/docker.sock: connect: permission denied</code></p>
+<pre><code class="language-sh">sudo apt install acl
+sudo setfacl --modify user:jammy:rw /var/run/docker.sock
+source bin/activate.sh 
+</code></pre>
+<h2 id="lista-de-comandos">Lista de comandos</h2>
+<p>https://aws-deepracer-community.github.io/deepracer-for-cloud/reference.html</p>
+<pre><code class="language-sh">dr-upload-custom-files
+dr-stop-training
+dr-start-training
+dr-stop-viewer
+dr-start-viewer
+</code></pre>
+<h2 id="verificar-que-el-docker-esta-corriendo">Verificar que el docker esta corriendo</h2>
+<pre><code class="language-sh">docker ps -a 
+</code></pre>
+<h3 id="para-hacer-el-streaming-en-youtube-del-entrenamiento">Para hacer el streaming en YouTube del entrenamiento</h3>
+<p>https://youtu.be/YVmlPvEioMA?feature=shared</p>
+<p>Se necesita tener instalado OBS. </p>
+              
+            </div>
+          </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Navegación de pie de página">
+        <a href="deepracer-WSL/" class="btn btn-neutral float-right" title="Correr el deep-racer en WSL de Windows">Siguiente <span class="icon icon-circle-arrow-right"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+      <p>Derechos de autor &copy; 2023  Andrés Felipe Puerta, <a href="https://github.com/Ph0n1x0">Luis Miguel Loaiza</a>,  <a href="https://github.com/David-8a">David Ochoa</a>,  <a href="https://github.com/davinsony">Davinson Castaño-Cano</a>.
+</p>
+  </div>
+
+  Construído con <a href="https://www.mkdocs.org/">MkDocs</a> usando <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provisto por <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versiones">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+    
+      <span><a href="deepracer-WSL/" style="color: #fcfcfc">Siguiente &raquo;</a></span>
+    
+  </span>
+</div>
+    <script src="js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = ".";</script>
+    <script src="js/theme_extra.js"></script>
+    <script src="js/theme.js"></script>
+      <script src="js/mathjax.js"></script>
+      <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+      <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+      <script src="search/main.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>
+
+<!--
+MkDocs version : 1.5.3
+Build Date UTC : 2023-10-26 19:20:34.902588+00:00
+-->
