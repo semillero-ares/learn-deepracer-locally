@@ -5,14 +5,14 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="description" content="None" />
       <link rel="shortcut icon" href="img/favicon.ico" />
-    <title>Aprendiendo a usar DeepRacer localmente</title>
+    <title>Usando el DeepRacer en local</title>
     <link rel="stylesheet" href="css/theme.css" />
     <link rel="stylesheet" href="css/theme_extra.css" />
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
     
       <script>
         // Current page data
-        var mkdocs_page_name = "Aprendiendo a usar DeepRacer localmente";
+        var mkdocs_page_name = "Usando el DeepRacer en local";
         var mkdocs_page_input_path = "index.md";
         var mkdocs_page_url = null;
       </script>
@@ -30,7 +30,7 @@
     <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
     <div class="wy-side-scroll">
       <div class="wy-side-nav-search">
-          <a href="." class="icon icon-home"> Aprendiendo a usar DeepRacer localmente
+          <a href="." class="icon icon-home"> Usando el DeepRacer en local
         </a><div role="search">
   <form id ="rtd-search-form" class="wy-form" action="./search.html" method="get">
       <input type="text" name="q" placeholder="Buscar documentos" aria-label="Buscar documentos" title="Escriba el término de búsqueda aquí" />
@@ -40,31 +40,35 @@
 
       <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Menu de navegación">
               <ul class="current">
-                <li class="toctree-l1 current"><a class="reference internal current" href=".">Aprendiendo a usar DeepRacer localmente</a>
+                <li class="toctree-l1 current"><a class="reference internal current" href=".">Usando el DeepRacer en local</a>
     <ul class="current">
-    <li class="toctree-l2"><a class="reference internal" href="#solucionando-el-error">Solucionando el error</a>
-    </li>
-    <li class="toctree-l2"><a class="reference internal" href="#lista-de-comandos">Lista de comandos</a>
-    </li>
-    <li class="toctree-l2"><a class="reference internal" href="#verificar-que-el-docker-esta-corriendo">Verificar que el docker esta corriendo</a>
+    <li class="toctree-l2"><a class="reference internal" href="#instalacion-en-wsl-o-ubuntu">Instalación en WSL o Ubuntu</a>
         <ul>
-    <li class="toctree-l3"><a class="reference internal" href="#para-hacer-el-streaming-en-youtube-del-entrenamiento">Para hacer el streaming en YouTube del entrenamiento</a>
+    <li class="toctree-l3"><a class="reference internal" href="#instalacion-de-docker">Instalación de Docker</a>
     </li>
         </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#instalacion-de-deepracer">Instalación de DeepRacer</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#usando-el-deepracer-en-local_1">Usando el DeepRacer en Local</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#en-la-terminal-1">En la Terminal 1:</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#en-la-terminal-2">En la Terminal 2:</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#modificando-la-funcion-recompensa">Modificando la función recompensa</a>
     </li>
     </ul>
                 </li>
               </ul>
               <ul>
-                <li class="toctree-l1"><a class="reference internal" href="deepracer-WSL/">Correr el deep-racer en WSL de Windows</a>
+                <li class="toctree-l1"><a class="reference internal" href="streaming/">Streaming</a>
                 </li>
               </ul>
               <ul>
-                <li class="toctree-l1"><a class="reference internal" href="deepracer-ubuntu/">Correr el deep-racer en Ubuntu</a>
-                </li>
-              </ul>
-              <ul>
-                <li class="toctree-l1"><a class="reference internal" href="deepracer-windows/">Correr el deep-racer en Windows sin WSL</a>
+                <li class="toctree-l1"><a class="reference internal" href="troubleshooting/">Solución de errores</a>
                 </li>
               </ul>
       </div>
@@ -74,14 +78,14 @@
     <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
       <nav class="wy-nav-top" role="navigation" aria-label="Menú de navegación en móvil">
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-          <a href=".">Aprendiendo a usar DeepRacer localmente</a>
+          <a href=".">Usando el DeepRacer en local</a>
         
       </nav>
       <div class="wy-nav-content">
         <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
   <ul class="wy-breadcrumbs">
     <li><a href="." class="icon icon-home" aria-label="Documentos"></a></li>
-      <li class="breadcrumb-item active">Aprendiendo a usar DeepRacer localmente</li>
+      <li class="breadcrumb-item active">Usando el DeepRacer en local</li>
     <li class="wy-breadcrumbs-aside">
     </li>
   </ul>
@@ -90,70 +94,106 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
             <div class="section" itemprop="articleBody">
               
-                <h1 id="aprendiendo-a-usar-deepracer-localmente">Aprendiendo a usar DeepRacer localmente</h1>
-<p>https://deepracer.com</p>
-<p>https://student.deepracer.com</p>
-<p>https://docs.docker.com/engine/install/ubuntu/#install-using-the-repository</p>
-<p>Add Docker's official GPG key:</p>
+                <h1 id="usando-el-deepracer-en-local">Usando el DeepRacer en local</h1>
+<p>Empecemos explicando que es el DeepRacer:</p>
+<p>DeepRacer es una plataforma de aprendizaje, competencia y diversión creada por Amazon AWS, que nos permite aprender sobre <em>machine learning</em> y ademas competir a nivel mundial con diferentes desarrolladores. </p>
+<p>Existen dos versiones para participar en competencias:</p>
+<ul>
+<li><a href="https://deepracer.com">La versión abierta</a> que tiene 10 horas de entrenamiento gratuitas los primeros 30 días.</li>
+<li><a href="https://student.deepracer.com">La versión estudiante</a> que tiene 10 horas de entrenamiento gratuitas cada mes. </li>
+</ul>
+<p>Una mejor forma de entrenar tu modelo y probarlo es entrenarlo en tu computador y usar esas 10 horas para enviar tus modelos a competir. </p>
+<p>Para instalar DeepRacer en tu computador necesitaremos tener <a href="https://aws-deepracer-community.github.io/deepracer-for-cloud/installation.html">ubuntu</a> o <a href="https://aws-deepracer-community.github.io/deepracer-for-cloud/windows.html">WSL</a> (ubuntu sobre windows). También esta la opción de instalarlo <a href="https://github.com/PhoenixDai/deepracer-windows">directamente en windows</a> pero no lo recomiendo. </p>
+<h2 id="instalacion-en-wsl-o-ubuntu">Instalación en WSL o Ubuntu</h2>
+<p>DeepRacer en local hace uso de <strong>Docker</strong> que es un gestor de contenedores que permiten instalar y correr facilmente todo lo necesario para entrenar y probar nuestro modelos en el computador. </p>
+<h3 id="instalacion-de-docker">Instalación de Docker</h3>
+<p>Para instalar docker en nuestro computador, lo haremos usando el repositorio oficial (<a href="https://docs.docker.com/engine/install/ubuntu/#install-using-the-repository">instructivo detallado</a>). Y seguiremos los pasos resumidos a continuación.</p>
+<ul>
+<li>Instalaremos una clave de seguridad para poder instalar docker:</li>
+</ul>
 <pre><code class="language-sh">sudo apt-get update
 sudo apt-get install ca-certificates curl gnupg
 sudo install -m 0755 -d /etc/apt/keyrings
 curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo gpg --dearmor -o /etc/apt/keyrings/docker.gpg
 sudo chmod a+r /etc/apt/keyrings/docker.gpg
 </code></pre>
-<p>Add the repository to Apt sources:</p>
+<ul>
+<li>Agregamos el repositorio a las fuentes apt:</li>
+</ul>
 <pre><code class="language-sh">echo \
   &quot;deb [arch=&quot;$(dpkg --print-architecture)&quot; signed-by=/etc/apt/keyrings/docker.gpg] https://download.docker.com/linux/ubuntu \
   &quot;$(. /etc/os-release &amp;&amp; echo &quot;$VERSION_CODENAME&quot;)&quot; stable&quot; | \
   sudo tee /etc/apt/sources.list.d/docker.list &gt; /dev/null
 sudo apt-get update
 </code></pre>
-<pre><code class="language-sh">sudo apt-get install docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
+<p>Los pasos anteriores solo deben hacerse una vez.</p>
+<ul>
+<li>Instalamos las dependencias (<a href="https://aws-deepracer-community.github.io/deepracer-for-cloud/windows.html" title="Instalación de DeepRacer en Windows">1</a>)</li>
+</ul>
+<pre><code class="language-sh">sudo apt-get install docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin jq awscli python3-boto3 docker-compose -y
 </code></pre>
-<p>https://aws-deepracer-community.github.io/deepracer-for-cloud/windows.html</p>
-<pre><code class="language-sh">sudo apt-get install jq awscli python3-boto3 docker-compose 
+<ul>
+<li>Verificar que Docker esta funcionando</li>
+</ul>
+<pre><code class="language-sh">sudo service docker status
 </code></pre>
-<p>https://stackoverflow.com/questions/44678725/cannot-connect-to-the-docker-daemon-at-unix-var-run-docker-sock-is-the-docker</p>
-<pre><code class="language-sh">sudo systemctl start docker
+<p>En caso de no estar funcionando inicializar el servicio como se muestra a continuación (<a href="https://stackoverflow.com/questions/44678725/cannot-connect-to-the-docker-daemon-at-unix-var-run-docker-sock-is-the-docker" title="Solucionando el servicio de docker">2</a>):</p>
+<pre><code class="language-sh">sudo systemctl start docker 
 sudo docker run hello-world
 </code></pre>
-<p>https://aws-deepracer-community.github.io/deepracer-for-cloud/installation.html</p>
+<h2 id="instalacion-de-deepracer">Instalación de DeepRacer</h2>
+<p>Para la instalación (<a href="https://aws-deepracer-community.github.io/deepracer-for-cloud/installation.html" title="Instalación general de DeepRacer">3</a>) de DeepRacer debemos clonar el repositorio <code>git</code>:</p>
 <pre><code class="language-sh">git clone https://github.com/aws-deepracer-community/deepracer-for-cloud.git
 </code></pre>
-<pre><code>aws configure --profile minio
+<p>una vez clonado vamos a la carpeta de <code>deepracer-for-cloud</code></p>
+<pre><code class="language-sh">cd deepracer-for-cloud
 </code></pre>
-<h2 id="solucionando-el-error">Solucionando el error</h2>
-<p>Error : <code>dial unix /var/run/docker.sock: connect: permission denied</code></p>
-<pre><code class="language-sh">sudo apt install acl
-sudo setfacl --modify user:jammy:rw /var/run/docker.sock
-source bin/activate.sh 
+<p>y seguiremos los siguientes pasos: </p>
+<ul>
+<li>Configuraremos el servidor que guardará los datos de entrenamiento:</li>
+</ul>
+<pre><code class="language-sh">aws configure --profile minio
 </code></pre>
-<h2 id="lista-de-comandos">Lista de comandos</h2>
-<p>https://aws-deepracer-community.github.io/deepracer-for-cloud/reference.html</p>
-<pre><code class="language-sh">dr-upload-custom-files
-dr-stop-training
-dr-start-training
+<p>Aquí es importante tener en cuenta las siguientes recomendaciones:</p>
+<ul>
+<li>El <em>"AWS Secret Access Key"</em> debe ser mayor de 4 carácteres</li>
+<li>La <em>"Default region name"</em> debe ser <code>us-east-1</code>.</li>
+</ul>
+<p>Luego de esta configuración debemos inicializar todos los procesos para el DeepRacer con el siguiente comando</p>
+<pre><code class="language-sh">./bin/init.sh
+</code></pre>
+<p>Aquí ya tenemos instalado y configurado nuestra DeepRacer en local</p>
+<h2 id="usando-el-deepracer-en-local_1">Usando el DeepRacer en Local</h2>
+<p>Vamos a tener dos terminales abiertas ubicadas en la carpeta <code>deepracer-for-cloud</code> y haremos los siguiente en cada terminal:</p>
+<h3 id="en-la-terminal-1">En la Terminal 1:</h3>
+<pre><code class="language-sh">source bin/activate.sh
 dr-stop-viewer
 dr-start-viewer
 </code></pre>
-<h2 id="verificar-que-el-docker-esta-corriendo">Verificar que el docker esta corriendo</h2>
-<pre><code class="language-sh">docker ps -a 
+<h3 id="en-la-terminal-2">En la Terminal 2:</h3>
+<pre><code class="language-sh">source bin/activate.sh
+dr-update-env
+dr-update
+dr-upload-custom-files
+dr-stop-evaluation
+dr-stop-training
+dr-start-training -w
 </code></pre>
-<h3 id="para-hacer-el-streaming-en-youtube-del-entrenamiento">Para hacer el streaming en YouTube del entrenamiento</h3>
-<p>https://youtu.be/YVmlPvEioMA?feature=shared</p>
-<p>Se necesita tener instalado OBS. </p>
+<p>Todos estos comandos pueden ser consultados <a href="https://aws-deepracer-community.github.io/deepracer-for-cloud/reference.html">en la página de referencia</a></p>
+<h2 id="modificando-la-funcion-recompensa">Modificando la función recompensa</h2>
+<p>Para modificar la función recompensa debemos modificar el archivo <code>/deepracer-for-cloud/custom_files/reward_function.py</code> y correr los comandos anteriores en los dos terminales.</p>
               
             </div>
           </div><footer>
     <div class="rst-footer-buttons" role="navigation" aria-label="Navegación de pie de página">
-        <a href="deepracer-WSL/" class="btn btn-neutral float-right" title="Correr el deep-racer en WSL de Windows">Siguiente <span class="icon icon-circle-arrow-right"></span></a>
+        <a href="streaming/" class="btn btn-neutral float-right" title="Streaming">Siguiente <span class="icon icon-circle-arrow-right"></span></a>
     </div>
 
   <hr/>
 
   <div role="contentinfo">
     <!-- Copyright etc -->
-      <p>Derechos de autor &copy; 2023  Andrés Felipe Puerta, <a href="https://github.com/Ph0n1x0">Luis Miguel Loaiza</a>,  <a href="https://github.com/David-8a">David Ochoa</a>,  <a href="https://github.com/davinsony">Davinson Castaño-Cano</a>.
+      <p>Derechos de autor &copy; 2023  <a href="https://github.com/davinsony">Davinson Castaño-Cano</a>.
 </p>
   </div>
 
@@ -172,7 +212,7 @@ dr-start-viewer
     
     
     
-      <span><a href="deepracer-WSL/" style="color: #fcfcfc">Siguiente &raquo;</a></span>
+      <span><a href="streaming/" style="color: #fcfcfc">Siguiente &raquo;</a></span>
     
   </span>
 </div>
@@ -195,5 +235,5 @@ dr-start-viewer
 
 <!--
 MkDocs version : 1.5.3
-Build Date UTC : 2023-10-26 19:20:34.902588+00:00
+Build Date UTC : 2023-11-10 15:18:53.754109+00:00
 -->
