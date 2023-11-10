@@ -132,3 +132,5 @@ Todos estos comandos pueden ser consultados [en la página de referencia](https:
 ## Modificando la función recompensa
 
 Para modificar la función recompensa debemos modificar el archivo `/deepracer-for-cloud/custom_files/reward_function.py` y correr los comandos anteriores en los dos terminales.
+
+Los parámetros de entrada de la función recompensa pueden ser consultado en [esta página](https://docs.aws.amazon.com/deepracer/latest/developerguide/deepracer-reward-function-input.html)
